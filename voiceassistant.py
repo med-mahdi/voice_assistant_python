@@ -5,6 +5,7 @@ engine = pyttsx3.init()
 
 # Set speaker output
 engine.setProperty('output', 'huawei cm510')  # Replace with your speaker name
+# engine.setProperty('output', 'solo prode nabil achraf')  # Replace with your speaker name
 
 # Set voice rate
 engine.setProperty('rate', 150)  # Adjust as needed
