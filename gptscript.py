@@ -1,5 +1,6 @@
 import os
 import openai
+from voiceassistant import *
 
 openai.api_key = "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"
 start_sequence = "\nAI:"
@@ -32,16 +33,19 @@ def chatgpt_clone(input, history):
     return history, output
 
 #> Order Dyal List when i asked Him: What is the last question i asked He responsed me with the first item in set , so you think what i'm thinking about
-#> history = [('What time is it now ?', '\n\nIt is 12:26 PM.'), ("Who's the king of morocco ?", ' \n\nThe current King of Morocco is His Majesty King Mohammed VI.'), ('what is the name one last time ?', ' \n\nThe name of the King of Morocco is His Majesty King Mohammed VI.')]
 # --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 #> This is one is fill up every time we talk with chatbot and he use those History to generate new responses
 history = []
 print("Chatbot is ready. Type 'quit' to exit.")
 
-# while True:
-#     # user_input = input("Human: ")
-#     user_input = input("Human: ") + "you are a chat bot so answer this question :"
-#     if user_input.lower() == "quit":
-#         break
-#     history, response = chatgpt_clone(user_input, history)
-#     print("AI:" + response)
+while True:
+    # user_input = input("Human: ")
+    user_input = input("You: ") + "you are a chat bot so answer this question :"
+    if user_input.lower() == "quit":
+        break
+    history, response = chatgpt_clone(user_input, history)
+
+    if ("write me the code" in user_input.lower()):
+        print("AI:" + response)
+    engine.say(response)
+    engine.runAndWait()
